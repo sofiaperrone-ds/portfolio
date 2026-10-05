@@ -1,0 +1,181 @@
+// Custom.scss
+// Option B: Include parts of Bootstrap
+
+// 1. Include functions first (so you can manipulate colors, SVGs, calc, etc)
+@import "vendor/bootstrap-5.3.6/scss/functions";
+
+// 2. Include any default variable overrides here
+$primary: #0068FF;
+$enable-shadows: true;
+$enable-rounded: true;
+
+$spacer: 1rem;
+$spacers: (
+  0: 0,
+  1: $spacer * .25,
+  2: $spacer * .5,
+  3: $spacer,
+  4: $spacer * 2,
+  5: $spacer * 3,
+  6: $spacer * 4,
+);
+ 
+
+// load google fonts in the <head> of the index.html file - lines 9-11
+$font-family-sans-serif: "Bricolage Grotesque", "Roboto", system-ui, -apple-system, "Segoe UI",
+  "Helvetica Neue", "Noto Sans", "Liberation Sans", Arial, sans-serif,
+  "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+
+// 3. Include remainder of required Bootstrap stylesheets (including any separate color mode stylesheets)
+@import "vendor/bootstrap-5.3.6/scss/variables";
+@import "vendor/bootstrap-5.3.6/scss/variables-dark";
+
+// 4. Include any default map overrides here
+
+// 5. Include remainder of required parts
+@import "vendor/bootstrap-5.3.6/scss/maps";
+@import "vendor/bootstrap-5.3.6/scss/mixins";
+@import "vendor/bootstrap-5.3.6/scss/root";
+
+// 6. Optionally include any other parts as needed
+@import "vendor/bootstrap-5.3.6/scss/utilities";
+@import "vendor/bootstrap-5.3.6/scss/reboot";
+@import "vendor/bootstrap-5.3.6/scss/type";
+@import "vendor/bootstrap-5.3.6/scss/images";
+@import "vendor/bootstrap-5.3.6/scss/containers";
+@import "vendor/bootstrap-5.3.6/scss/grid";
+//@import "vendor/bootstrap-5.3.6/scss/tables";
+@import "vendor/bootstrap-5.3.6/scss/forms";
+@import "vendor/bootstrap-5.3.6/scss/buttons";
+@import "vendor/bootstrap-5.3.6/scss/transitions";
+@import "vendor/bootstrap-5.3.6/scss/dropdown";
+@import "vendor/bootstrap-5.3.6/scss/button-group";
+@import "vendor/bootstrap-5.3.6/scss/nav";
+@import "vendor/bootstrap-5.3.6/scss/navbar";
+@import "vendor/bootstrap-5.3.6/scss/card";
+@import "vendor/bootstrap-5.3.6/scss/accordion";
+@import "vendor/bootstrap-5.3.6/scss/breadcrumb";
+@import "vendor/bootstrap-5.3.6/scss/pagination";
+@import "vendor/bootstrap-5.3.6/scss/badge";
+@import "vendor/bootstrap-5.3.6/scss/alert";
+@import "vendor/bootstrap-5.3.6/scss/progress";
+@import "vendor/bootstrap-5.3.6/scss/list-group";
+@import "vendor/bootstrap-5.3.6/scss/close";
+// @import "vendor/bootstrap-5.3.6/scss/toasts";
+@import "vendor/bootstrap-5.3.6/scss/modal";
+@import "vendor/bootstrap-5.3.6/scss/tooltip";
+@import "vendor/bootstrap-5.3.6/scss/popover";
+@import "vendor/bootstrap-5.3.6/scss/carousel";
+@import "vendor/bootstrap-5.3.6/scss/spinners";
+@import "vendor/bootstrap-5.3.6/scss/offcanvas";
+@import "vendor/bootstrap-5.3.6/scss/placeholders";
+@import "vendor/bootstrap-5.3.6/scss/helpers";
+
+// 7. Optionally include utilities API last to generate classes based on the Sass map in `_utilities.scss`
+@import "vendor/bootstrap-5.3.6/scss/utilities/api";
+
+// 8. Add additional custom code here
+
+body {
+  padding-top: 100px;
+}
+
+@font-face {
+  font-family: 'MaziusDisplay-Bold'; /* Sostituisci con il nome del tuo font*/
+  src: url('font/fonts/MaziusDisplay-Bold.woff2') format('woff2'), url('font/fonts/MaziusDisplay-Bold.woff') format('woff');
+  font-size: 75px;
+  font-style: italic;
+  font-weight: 700;
+  line-height: normal;
+}
+
+
+// bonus: esempi di filtri
+.f-blur {
+  filter: blur(5px);
+}
+.f-brightness {
+  filter: brightness(0.4);
+}
+.f-contrast {
+  filter: contrast(200%);
+}
+.f-drop-shadow {
+  filter: drop-shadow(16px 16px 20px blue);
+}
+.f-grayscale {
+  filter: grayscale(50%);
+}
+.f-hue-rotate {
+  filter: hue-rotate(90deg);
+}
+.f-invert {
+  filter: invert(75%);
+}
+.f-opacity {
+  filter: opacity(25%);
+}
+.f-saturate {
+  filter: saturate(30%);
+}
+.f-sepia {
+  filter: sepia(60%);
+}
+.f-multiple {
+  filter: grayscale(100%) contrast(150%) sepia(100%);
+}
+
+.text-color {
+  color: $primary;
+}
+
+.bg-color {
+  color: shift-color($primary, 40%);
+  background-color: $primary;
+
+  @include media-breakpoint-up(lg) {
+    background-color: $dark;
+   }
+}
+
+
+/*
+Codice per mostrare le colonne -- DA RIMUOVERE
+Seleziona tutti i div, figli di un tag con class="row", il cui nome inizia per col. 
+--- INIZIO
+
+div[class^="container"] {
+  position: relative;
+}
+
+.row > div[class^="col"] {
+  border: 1px solid cyan;
+  position: relative;
+}
+
+.row > div[class^="col"]:before {
+  background-color: rgba(0, 255, 255, 0.25);
+  content: "";
+  display: block;
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: -2;
+}
+.row > div[class^="col"]:after {
+  content: "";
+  display: block;
+  position: absolute;
+  top: 0;
+  left: 15px;
+  right: 15px;
+  bottom: 0;
+  z-index: -1;
+}
+
+/*
+Codice per mostrare le colonne -- DA RIMUOVERE
+--- FINE
+*/
